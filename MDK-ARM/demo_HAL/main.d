@@ -22,12 +22,15 @@ demo_hal\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_exti.h
 demo_hal\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h
 demo_hal\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma_ex.h
 demo_hal\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h
+demo_hal\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc.h
+demo_hal\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc_ex.h
 demo_hal\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h
 demo_hal\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
 demo_hal\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h
 demo_hal\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
 demo_hal\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
 demo_hal\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
+demo_hal\main.o: ../Core/Inc/adc.h
 demo_hal\main.o: ../Core/Inc/i2c.h
 demo_hal\main.o: ../Core/Inc/tim.h
 demo_hal\main.o: ../Core/Inc/gpio.h
@@ -36,3 +39,4 @@ demo_hal\main.o: ../Core/Inc/OLED.h
 demo_hal\main.o: ../Core/Inc/Beeper.h
 demo_hal\main.o: ../Core/Inc/Button.h
 demo_hal\main.o: ../Core/Inc/Encoder.h
+demo_hal\main.o: ../Core/Inc/light_sensor.h
