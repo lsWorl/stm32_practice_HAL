@@ -25,6 +25,7 @@
 /* USER CODE BEGIN Includes */
 #include "led.h"
 #include "OLED.h"
+#include "Beeper.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -101,17 +102,7 @@ int main(void)
     /* USER CODE BEGIN 3 */
     OLED_ShowString(1, 1, "Hello, OLED!");  // ÏÔÊ¾×Ö·û´®
     OLED_ShowNum(2, 1, 12345, 5);           // ÏÔÊ¾Êý×Ö
-    LED_AllOn();
-    HAL_Delay(1000);
-    LED_AllOff();
-    HAL_Delay(1000);
-    LED_Toggle(LED1_Pin);
-    HAL_Delay(1000);
-    LED_Toggle(LED2_Pin);
-    HAL_Delay(1000);
-    LED_Toggle(LED3_Pin);
-    HAL_Delay(1000);
-    LED_Toggle(LED4_Pin);
+    
     HAL_Delay(1000);
   }
   /* USER CODE END 3 */

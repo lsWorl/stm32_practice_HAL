@@ -401,6 +401,11 @@
               <FilePath>..\Core\Src\OLED.c</FilePath>
             </File>
             <File>
+              <FileName>Beeper.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\Beeper.c</FilePath>
+            </File>
+            <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Core/Src/main.c</FilePath>

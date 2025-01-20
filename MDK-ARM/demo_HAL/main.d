@@ -30,3 +30,4 @@ demo_hal\main.o: ../Core/Inc/i2c.h
 demo_hal\main.o: ../Core/Inc/gpio.h
 demo_hal\main.o: ../Core/Inc/led.h
 demo_hal\main.o: ../Core/Inc/OLED.h
+demo_hal\main.o: ../Core/Inc/Beeper.h
