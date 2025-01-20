@@ -13,7 +13,7 @@
 void LightSensor_Init(void)
 {
   // 启动 ADC
-  HAL_ADC_Start(&hadc1);
+  // HAL_ADC_Start(&hadc1);
 }
 
 /**
@@ -23,12 +23,8 @@ void LightSensor_Init(void)
  */
 uint16_t LightSensor_GetValue(void)
 {
-  // 启动 ADC 转换
-  HAL_ADC_Start(&hadc1);
-  // 等待转换完成
-  HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
   // 返回转换结果
-  return HAL_ADC_GetValue(&hadc1);
+  return light_sensor_value;
 }
 
 /**

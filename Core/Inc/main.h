@@ -57,10 +57,10 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define Temp_Sensor_Pin GPIO_PIN_0
-#define Temp_Sensor_GPIO_Port GPIOA
-#define Light_Sensor_Pin GPIO_PIN_1
+#define Light_Sensor_Pin GPIO_PIN_0
 #define Light_Sensor_GPIO_Port GPIOA
+#define Temp_Sensor_Pin GPIO_PIN_1
+#define Temp_Sensor_GPIO_Port GPIOA
 #define Beeper_Pin GPIO_PIN_2
 #define Beeper_GPIO_Port GPIOA
 #define BTN1_Pin GPIO_PIN_5

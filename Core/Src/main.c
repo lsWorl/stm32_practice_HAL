@@ -19,6 +19,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "adc.h"
+#include "dma.h"
 #include "i2c.h"
 #include "tim.h"
 #include "gpio.h"
@@ -93,14 +94,15 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_I2C1_Init();
   MX_TIM3_Init();
   MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
   OLED_Init();
   Encoder_Init();
-  LightSensor_Init();
-
+  OLED_Clear();
+  
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -112,25 +114,11 @@ int main(void)
     /* USER CODE BEGIN 3 */
     // ��ȡ����ǿ�Ȱٷֱ�
     uint8_t percent = LightSensor_GetPercent();
-    OLED_ShowNum(1, 1, percent, 3);
-
+    OLED_ShowNum(1, 1, light_sensor_value, 4);
+    OLED_ShowNum(3, 1, temp_sensor_value, 4);
     // ��ȡ���յȼ�
     LightLevel level = LightSensor_GetLevel();
-    switch (level)
-    {
-    case LIGHT_LEVEL_DARK:
-      OLED_ShowString(2, 1, "Dark");
-      break;
-    case LIGHT_LEVEL_DIM:
-      OLED_ShowString(2, 1, "Dim");
-      break;
-    case LIGHT_LEVEL_NORMAL:
-      OLED_ShowString(2, 1, "Normal");
-      break;
-    case LIGHT_LEVEL_BRIGHT:
-      OLED_ShowString(2, 1, "Bright");
-      break;
-    }
+    
 
     HAL_Delay(500); // delay 500ms
   }
