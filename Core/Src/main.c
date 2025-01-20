@@ -19,6 +19,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "i2c.h"
+#include "tim.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -27,6 +28,7 @@
 #include "OLED.h"
 #include "Beeper.h"
 #include "Button.h"
+#include "Encoder.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -90,8 +92,12 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_I2C1_Init();
+  MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
   OLED_Init();
+  Encoder_Init();
+  OLED_ShowString(1, 1, "count:");
+  OLED_ShowString(2, 1, "state:");
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -101,15 +107,24 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    OLED_ShowString(1, 1, "btn test"); 
-    OLED_ShowNum(2, 1, 12345, 5);          
-    Button_Scan();                         // µ÷ÓÃ°´¼üÉ¨Ãèº¯Êý
+    
+    // ¸üÐÂ±àÂëÆ÷¼ÆÊýÖµ
+    
+    OLED_ShowNum(1, 7, Encoder_GetCount(), 2);
+    if (Encoder_GetState() == ENCODER_CW)
+    {
+      OLED_ShowString(2, 7, "CW");
+    }
+    else if (Encoder_GetState() == ENCODER_CCW)
+    {
+      OLED_ShowString(2, 7, "CCW");
+    }
+    Button_Scan(); // ï¿½ï¿½ï¿½Ã°ï¿½ï¿½ï¿½É¨ï¿½èº¯ï¿½ï¿½
     ButtonState btn1_state = Button_GetState(KEY_MODE);
     ButtonState btn2_state = Button_GetState(KEY_CONFIRM);
     ButtonState btn3_state = Button_GetState(KEY_ALARM);
     ButtonState btn4_state = Button_GetState(KEY_RESET);
-    
-    
+    HAL_Delay(20);
   }
   /* USER CODE END 3 */
 }

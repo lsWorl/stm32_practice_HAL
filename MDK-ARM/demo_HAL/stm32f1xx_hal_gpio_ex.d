@@ -25,3 +25,5 @@ demo_hal\stm32f1xx_hal_gpio_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_
 demo_hal\stm32f1xx_hal_gpio_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
 demo_hal\stm32f1xx_hal_gpio_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h
 demo_hal\stm32f1xx_hal_gpio_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
+demo_hal\stm32f1xx_hal_gpio_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
+demo_hal\stm32f1xx_hal_gpio_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
