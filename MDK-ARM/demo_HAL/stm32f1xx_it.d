@@ -27,3 +27,5 @@ demo_hal\stm32f1xx_it.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash
 demo_hal\stm32f1xx_it.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h
 demo_hal\stm32f1xx_it.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
 demo_hal\stm32f1xx_it.o: ../Core/Inc/stm32f1xx_it.h
+demo_hal\stm32f1xx_it.o: ../Core/Inc/Button.h
+demo_hal\stm32f1xx_it.o: ../Core/Inc/gpio.h
