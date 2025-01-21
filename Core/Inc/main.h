@@ -76,6 +76,10 @@ void Error_Handler(void);
 #define BTN3_Pin GPIO_PIN_1
 #define BTN3_GPIO_Port GPIOB
 #define BTN3_EXTI_IRQn EXTI1_IRQn
+#define MPU6050_SCL_Pin GPIO_PIN_10
+#define MPU6050_SCL_GPIO_Port GPIOB
+#define MPU6050_SDA_Pin GPIO_PIN_11
+#define MPU6050_SDA_GPIO_Port GPIOB
 #define BTN4_Pin GPIO_PIN_12
 #define BTN4_GPIO_Port GPIOB
 #define BTN4_EXTI_IRQn EXTI15_10_IRQn
