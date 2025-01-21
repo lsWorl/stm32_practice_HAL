@@ -26,15 +26,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "led.h"
-#include "OLED.h"
-#include "Beeper.h"
-#include "Button.h"
-#include "Encoder.h"
-#include "light_sensor.h"
-#include "temp_sensor.h"
-#include "mpu6050.h"
-#include "servo.h"
+#include "system.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -70,15 +62,12 @@ void SystemClock_Config(void);
 /* USER CODE END 0 */
 
 /**
-  * @brief  The application entry point.
-  * @retval int
-  */
+ * @brief  The application entry point.
+ * @retval int
+ */
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-  uint8_t init_status;
-  MPU6050_Attitude attitude;
-  uint8_t angle = 90;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -106,22 +95,7 @@ int main(void)
   MX_I2C2_Init();
   MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
-  OLED_Init();
-  Servo_Init();
-  Encoder_Init();
-  init_status = MPU6050_Init();
-  OLED_Clear();
-  
-  //init failed
-  if (init_status != 0)
-  {
-
-    OLED_ShowString(1, 1, "MPU6050 Error!");
-    // ï¿½ï¿½Ê¾MPU6050ï¿½ï¿½ID ï¿½ï¿½ï¿½IDï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½FFï¿½ï¿½ï¿½ï¿½ï¿½Ê¾I2Cï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½
-    OLED_ShowHexNum(2, 1, MPU6050_ReadID(), 2);
-    while (1)
-      ;
-  }
+  System_Init();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -131,42 +105,18 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    if(angle > 180){
-      angle = 0;
-      Servo_SetAngle(angle);
-    }else{
-      angle++;
-      Servo_SetAngle(angle);
-    }
-    MPU6050_GetAttitude(&attitude);
-    // ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-    // OLED_ShowString(1, 1, "Temp:");
-    // OLED_ShowNum(1, 6, (uint16_t)TempSensor_GetTemp(), 2);
-    // OLED_ShowString(1, 8, ".");
-    // OLED_ShowNum(1, 9, (uint16_t)(TempSensor_GetTemp() * 10) % 10, 1);
+    // ÏµÍ³Ö÷´¦Àí
+    System_Process();
 
-    OLED_ShowString(2, 1, "Light:");
-    OLED_ShowNum(2, 7, LightSensor_GetPercent(), 3);
-    OLED_ShowString(2, 10, "%");
-
-    OLED_ShowString(3, 1, "Pitch:");
-    OLED_ShowSignedNum(3, 7, (int16_t)attitude.pitch, 3);
-
-    OLED_ShowString(4, 1, "Roll:");
-    OLED_ShowSignedNum(4, 6, (int16_t)attitude.roll, 3);
-    
-    OLED_ShowString(1, 1, "angle:");
-    OLED_ShowNum(5, 7, angle, 3);
-    
-    HAL_Delay(50); // delay 500ms
+    HAL_Delay(10); // delay 10ms
   }
   /* USER CODE END 3 */
 }
 
 /**
-  * @brief System Clock Configuration
-  * @retval None
-  */
+ * @brief System Clock Configuration
+ * @retval None
+ */
 void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
@@ -174,8 +124,8 @@ void SystemClock_Config(void)
   RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
 
   /** Initializes the RCC Oscillators according to the specified parameters
-  * in the RCC_OscInitTypeDef structure.
-  */
+   * in the RCC_OscInitTypeDef structure.
+   */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.HSEPredivValue = RCC_HSE_PREDIV_DIV1;
@@ -189,9 +139,8 @@ void SystemClock_Config(void)
   }
 
   /** Initializes the CPU, AHB and APB buses clocks
-  */
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
-                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+   */
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
@@ -214,9 +163,9 @@ void SystemClock_Config(void)
 /* USER CODE END 4 */
 
 /**
-  * @brief  This function is executed in case of error occurrence.
-  * @retval None
-  */
+ * @brief  This function is executed in case of error occurrence.
+ * @retval None
+ */
 void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
@@ -228,14 +177,14 @@ void Error_Handler(void)
   /* USER CODE END Error_Handler_Debug */
 }
 
-#ifdef  USE_FULL_ASSERT
+#ifdef USE_FULL_ASSERT
 /**
-  * @brief  Reports the name of the source file and the source line number
-  *         where the assert_param error has occurred.
-  * @param  file: pointer to the source file name
-  * @param  line: assert_param error line source number
-  * @retval None
-  */
+ * @brief  Reports the name of the source file and the source line number
+ *         where the assert_param error has occurred.
+ * @param  file: pointer to the source file name
+ * @param  line: assert_param error line source number
+ * @retval None
+ */
 void assert_failed(uint8_t *file, uint32_t line)
 {
   /* USER CODE BEGIN 6 */
