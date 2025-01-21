@@ -83,6 +83,8 @@ void Error_Handler(void);
 #define BTN4_Pin GPIO_PIN_12
 #define BTN4_GPIO_Port GPIOB
 #define BTN4_EXTI_IRQn EXTI15_10_IRQn
+#define SERVO_Pin GPIO_PIN_8
+#define SERVO_GPIO_Port GPIOA
 #define LED1_Pin GPIO_PIN_9
 #define LED1_GPIO_Port GPIOA
 #define LED2_Pin GPIO_PIN_10
