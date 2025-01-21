@@ -5,16 +5,6 @@
 #define LIGHT_THRESHOLD_DIM 1500    // 昏暗阈值
 #define LIGHT_THRESHOLD_NORMAL 1000 // 正常阈值
 
-/**
- * @brief  初始化光敏传感器的ADC
- * @param  None
- * @retval None
- */
-void LightSensor_Init(void)
-{
-  // 启动 ADC
-  // HAL_ADC_Start(&hadc1);
-}
 
 /**
  * @brief  获取ADC转换值

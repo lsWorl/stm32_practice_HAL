@@ -76,8 +76,8 @@ void MX_ADC1_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN ADC1_Init 2 */
-  // ����ADCת��
-  HAL_ADC_Start_DMA(&hadc1, adc_values, 2); // 2��ʾ˫ͨ��
+  // start ADC DMA
+  HAL_ADC_Start_DMA(&hadc1, adc_values, 2); // 2 means dual channel
   /* USER CODE END ADC1_Init 2 */
 
 }
@@ -152,12 +152,12 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* adcHandle)
 }
 
 /* USER CODE BEGIN 1 */
-// ADC ת����ɻص�����
+// ADC callback
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 {
     if (hadc->Instance == ADC1) {
-        light_sensor_value = adc_values[0]; // PA0������������
-        temp_sensor_value = adc_values[1];  // PA1���¶ȴ�����
+        light_sensor_value = adc_values[0]; // PA0 get light sensor value
+        temp_sensor_value = adc_values[1];  // PA1 get temperature sensor value
     }
 }
 /* USER CODE END 1 */

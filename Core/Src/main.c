@@ -32,6 +32,7 @@
 #include "Button.h"
 #include "Encoder.h"
 #include "light_sensor.h"
+#include "temp_sensor.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -116,6 +117,9 @@ int main(void)
     uint8_t percent = LightSensor_GetPercent();
     OLED_ShowNum(1, 1, light_sensor_value, 4);
     OLED_ShowNum(3, 1, temp_sensor_value, 4);
+    //OLEDÏÔÊ¾ÎÂ¶È
+    float temp = TempSensor_GetTemp();
+    OLED_ShowNum(2, 1, temp, 4);
     // ï¿½ï¿½È¡ï¿½ï¿½ï¿½ÕµÈ¼ï¿½
     LightLevel level = LightSensor_GetLevel();
     

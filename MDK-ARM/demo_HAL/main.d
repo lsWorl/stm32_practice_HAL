@@ -41,3 +41,4 @@ demo_hal\main.o: ../Core/Inc/Beeper.h
 demo_hal\main.o: ../Core/Inc/Button.h
 demo_hal\main.o: ../Core/Inc/Encoder.h
 demo_hal\main.o: ../Core/Inc/light_sensor.h
+demo_hal\main.o: ../Core/Inc/temp_sensor.h
